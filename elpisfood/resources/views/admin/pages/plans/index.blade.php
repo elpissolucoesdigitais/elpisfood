@@ -36,6 +36,9 @@
                     @endforeach
                 </tbody>
            </table>
+           <div class="card-footer">
+               {{$plans->links()}}
+           </div>
         </div>
     </div>
 @stop
