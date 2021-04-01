@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('admin/plans','Admin\PlanController@index')->name('plans.index');
 Route::get('/', function () {
     return view('welcome');
 });
+
+
