@@ -16,7 +16,13 @@
                 <li><strong>Descrição:</strong> {{$plan->description}}</li>
                 <li><strong>Preço</strong> R${{number_format($plan->price, 2, ',','.')}}</li>
             </ul>
-            <a href="{{route('plans.index')}}"class="btn btn-dark">Voltar</a>
+
+            <form action="{{route('plans.destroy',$plan->url)}}" method="POST">
+                @method('DELETE')
+                @csrf
+                <button type="submit" class="btn btn-danger">Deletar</button>
+                <a href="{{route('plans.index')}}"class="btn btn-dark">Voltar</a>
+            </form>
         </div>
     </div>
 @endsection
