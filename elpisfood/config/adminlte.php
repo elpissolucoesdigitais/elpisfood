@@ -225,13 +225,9 @@ return [
 
     'menu' => [
         [
-            'text' => 'search',
-            'search' => true,
-            'topnav' => true,
-        ],
-        [
             'text' => 'Planos',
             'url'  => 'admin/plans',
+            'icon' => 'fas fa-list'
         ],
 
     ],

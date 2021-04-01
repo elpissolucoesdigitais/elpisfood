@@ -7,7 +7,7 @@
         <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Dashboard</a></li>
         <li class="breadcrumb-item active"><a href="{{route('plans.index')}}">Planos</a></li>
     </ol>
-    <h1>Planos <a href="{{route('plans.create')}}" class="btn btn-dark">ADD</a></h1>
+    <h1>Planos <a href="{{route('plans.create')}}" class="btn btn-dark">ADD <i class="fas fa-plus-circle"></i></a></h1>
 
 @stop
 
@@ -18,7 +18,7 @@
                 @csrf
 
                 <input type="text" name="filter" class="form-control" placeholder="pesquisar" value="{{$filters['filter'] ?? ''}}">
-                <button type="submit" class="btn btn-dark">Filtrar</button>
+                <button type="submit" class="btn btn-dark">Filtrar<i class="fas fa-sort-alpha-up"></i></button>
             </form>
         </div>
         <div class="card-body">

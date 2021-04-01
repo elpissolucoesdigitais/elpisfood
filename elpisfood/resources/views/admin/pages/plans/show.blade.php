@@ -20,8 +20,8 @@
             <form action="{{route('plans.destroy',$plan->url)}}" method="POST">
                 @method('DELETE')
                 @csrf
-                <button type="submit" class="btn btn-danger">Deletar</button>
-                <a href="{{route('plans.index')}}"class="btn btn-dark">Voltar</a>
+                <button type="submit" class="btn btn-danger">Deletar <i class="fas fa-trash-alt"></i></button>
+                <a href="{{route('plans.index')}}"class="btn btn-dark">Voltar <i class="fas fa-undo"></i></a>
             </form>
         </div>
     </div>
