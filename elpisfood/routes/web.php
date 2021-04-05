@@ -11,7 +11,8 @@
 |
 */
 Route::get('admin','Admin\PlanController@index')->name('admin.index');
-
+Route::put('admin/plans/{url}/edit','Admin\PlanController@edit')->name('plans.edit');
+Route::put('admin/plans/{url}','Admin\PlanController@update')->name('plans.update');
 
 Route::any('admin/plans/search','Admin\PlanController@search')->name('plans.search');
 Route::post('admin/plans','Admin\PlanController@store')->name('plans.store');
