@@ -13,7 +13,24 @@
 Route::prefix('admin')
     ->namespace('Admin')
     ->group(function(){
+
+    /**
+     * Routes Detail Plans
+     */
+        Route::get('plans/{url}/details','DetailPlanController@index')->name('details.plan.index');
+
+
+
+
+    /**
+     * Routes dashboard
+     */
+
     Route::get('/','PlanController@index')->name('admin.index');
+    /**
+     * Routes Plans
+     */
+
     Route::get('plans/{url}/edit','PlanController@edit')->name('plans.edit');
     Route::put('admin/plans/{url}','PlanController@update')->name('plans.update');
 
