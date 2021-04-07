@@ -17,6 +17,8 @@
                 <li><strong>Preço</strong> R${{number_format($plan->price, 2, ',','.')}}</li>
             </ul>
 
+            @include('admin.includes.alerts')
+
             <form action="{{route('plans.destroy',$plan->url)}}" method="POST">
                 @method('DELETE')
                 @csrf
