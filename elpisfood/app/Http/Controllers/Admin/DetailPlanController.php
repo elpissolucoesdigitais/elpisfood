@@ -35,6 +35,16 @@ class DetailPlanController extends Controller
         }
         return view('admin.pages.plans.details.create', compact('plan'));
     }
+    public function edit($urlPlan, $idDetail)
+    {
+        $plan = $this->plan->where('url',$urlPlan)->first();
+        $detail = $this->repository->find($idDetail);
+        if(!$plan || !$detail)
+        {
+            return redirect()->back();
+        }
+        return view('admin.pages.plans.details.edit', compact('plan','detail'));
+    }
     public function store(Request $request, $urlPlan)
     {
         if(!$plan = $this->plan->where('url',$urlPlan)->first())
@@ -43,6 +53,18 @@ class DetailPlanController extends Controller
         }
         //dd($request->all());
         $plan->details()->create($request->all());
+
+        return redirect()->route('details.plan.index',$plan->url);
+    }
+    public function update(Request $request, $urlPlan, $idDetail)
+    {
+        $plan = $this->plan->where('url',$urlPlan)->first();
+        $detail = $this->repository->find($idDetail);
+        if(!$plan || !$detail)
+        {
+            return redirect()->back();
+        }
+        $detail->update($request->all());
 
         return redirect()->route('details.plan.index',$plan->url);
     }
