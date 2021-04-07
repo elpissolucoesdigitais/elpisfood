@@ -9,7 +9,7 @@
         <li class="breadcrumb-item active"><a href="{{route('plans.show',$plan->url)}}">{{$plan->name}}</a></li>
         <li class="breadcrumb-item active"><a href="{{route('details.plan.index',$plan->url)}}" class="active">Detalhes</a></li>
     </ol>
-    <h1>Detalhes do Plano {{$plan->name}} <a href="{{route('plans.create')}}" class="btn btn-dark">ADD <i class="fas fa-plus-circle"></i></a></h1>
+    <h1>Adicionar novo detalhe ao plano {{$plan->name}} <a href="{{route('details.plan.create',$plan->url)}}" class="btn btn-dark">ADD <i class="fas fa-plus-circle"></i></a></h1>
 
 @stop
 

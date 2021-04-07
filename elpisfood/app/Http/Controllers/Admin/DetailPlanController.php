@@ -27,4 +27,23 @@ class DetailPlanController extends Controller
         $details = $plan->details()->paginate();
         return view('admin.pages.plans.details.index',compact('plan','details'));
     }
+    public function create($urlPlan)
+    {
+        if(!$plan = $this->plan->where('url',$urlPlan)->first())
+        {
+            return redirect()->back();
+        }
+        return view('admin.pages.plans.details.create', compact('plan'));
+    }
+    public function store(Request $request, $urlPlan)
+    {
+        if(!$plan = $this->plan->where('url',$urlPlan)->first())
+        {
+            return redirect()->back();
+        }
+        //dd($request->all());
+        $plan->details()->create($request->all());
+
+        return redirect()->route('details.plan.index',$plan->url);
+    }
 }
