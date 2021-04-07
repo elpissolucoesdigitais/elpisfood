@@ -23,3 +23,4 @@
         {{ session('info') }}
     </div>
 @endif
+
