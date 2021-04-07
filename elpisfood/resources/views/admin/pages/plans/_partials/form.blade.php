@@ -1,3 +1,4 @@
+@include('admin.includes.alerts')
 <div class="form-group">
     <label>Nome</label>
     <input type="text" name="name" id="" class="form-control" value="{{$plan->name ?? ''}}">
