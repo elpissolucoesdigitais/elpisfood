@@ -18,7 +18,7 @@
 
             @include('admin.includes.alerts')
 
-            <form action="" method="POST">
+            <form action="{{route('profiles.destroy',$profile->id)}}" method="POST">
                 @method('DELETE')
                 @csrf
                 <button type="submit" class="btn btn-danger">Deletar <i class="fas fa-trash-alt"></i></button>
