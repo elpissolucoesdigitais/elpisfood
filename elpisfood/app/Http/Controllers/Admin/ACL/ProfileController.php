@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\ACL;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Profile;
-
+use App\Http\Requests\StoreUpdateProfile;
 class ProfileController extends Controller
 {
     protected $repository;
@@ -41,7 +41,7 @@ class ProfileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUpdateProfile $request)
     {
         //dd($request->all());
         $this->repository->create($request->all());
@@ -86,7 +86,7 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUpdateProfile $request, $id)
     {
         if(!$profile = $this->repository->find($id))
         {
