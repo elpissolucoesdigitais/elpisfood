@@ -30,7 +30,11 @@ Route::prefix('admin')
 
     Route::get('profiles/{id}/permissions','ACL\PermissionProfileController@permissions')->name('profiles.permissions');
 
-
+       /**
+     *   profile XPermission
+     *
+     */
+    Route::get('permissions/{id}/profile','ACL\PermissionProfileController@profiles')->name('permissions.profiles');
     /**
      * Routes Permission
      */

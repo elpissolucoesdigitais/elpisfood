@@ -238,7 +238,8 @@ return [
         'text' => 'Permissões',
             'url'  => 'admin/permissions',
             'icon' => 'fas fa-user-lock'
-        ]
+        ],
+
     ],
 
     /*
