@@ -15,6 +15,14 @@ Route::prefix('admin')
     ->namespace('Admin')
     ->group(function(){
     /**
+     * create Permission
+     *
+     */
+    Route::post('profiles/{id}/permissions','ACL\PermissionProfileController@attachPermissionsProfile')->name('profiles.permissions.attach');
+
+    Route::get('profiles/{id}/permissions/create','ACL\PermissionProfileController@permissionsAvailable')->name('profiles.permissions.available');
+
+        /**
      * Permission X profile
      *
      */

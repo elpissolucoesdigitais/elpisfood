@@ -1,14 +1,14 @@
 @extends('adminlte::page')
 
-@section('title', "Permissões do perfil {{$profile->name}}")
+@section('title', "Permissões disponíveis perfil {$profile->name}")
 
 @section('content_header')
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Dashboard</a></li>
-        <li class="breadcrumb-item active"><a href="{{route('profiles.permissions',$profile->id)}}" class="active">Permissões do perfil</a></li>
+        <li class="breadcrumb-item active"><a href="{{route('profiles.permissions.available',$profile->id)}}" class="active">Permissões do perfil</a></li>
+
     </ol>
-    <h1>Permissões do perfil {{$profile->name}}
-    <a href="{{route('profiles.permissions.available',$profile->id)}}" class="btn btn-dark">ADD Nova Permissão <i class="fas fa-plus-circle"></i></a></h1>
+    <h1>Permissões disponíveis perfil {{$profile->name}}</h1>
 
 @stop
 
@@ -31,7 +31,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($permissions as $permission)
+                    <form action="{{route('profiles.permissions.attach',$profile->id)}}" method="post">
+                        @csrf
+                        @foreach ($permissions as $permission)
                         <tr>
                             <td>
                                 <input type="checkbox" name="permissions[]" value="{{$permission->id}}">
@@ -39,12 +41,16 @@
                             <td>
                                 {{$permission->name}}
                             </td>
-
-                            <td styled="width=10px;">
-                                <a href="{{route('profiles.edit',$profile->id)}}" class="btn btn-success"><i class="fas fa-user-lock"></i></a>
-                            </td>
                         </tr>
                     @endforeach
+                    @include('admin.includes.alerts')
+                    <tr colspan="500">
+                        <td>
+
+                            <button type="submit" class="btn btn-success">Vincular</button>
+                        </td>
+                    </tr>
+                    </form>
                 </tbody>
            </table>
            <div class="card-footer">
