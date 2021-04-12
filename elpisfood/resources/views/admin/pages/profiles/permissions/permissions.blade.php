@@ -28,6 +28,7 @@
                     <tr>
                         <th width="50px">#</th>
                         <th>Nome</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,7 +42,7 @@
                             </td>
 
                             <td styled="width=10px;">
-                                <a href="{{route('profiles.edit',$profile->id)}}" class="btn btn-success"><i class="fas fa-user-lock"></i></a>
+                                <a href="{{route('profiles.permission.detach',[$profile->id, $permission->id])}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                     @endforeach

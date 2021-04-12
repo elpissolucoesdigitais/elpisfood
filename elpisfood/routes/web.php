@@ -26,6 +26,8 @@ Route::prefix('admin')
      * Permission X profile
      *
      */
+    Route::get('profiles/{id}/permission/{idPermission}/detach','ACL\PermissionProfileController@detachPermissionProfile')->name('profiles.permission.detach');
+
     Route::get('profiles/{id}/permissions','ACL\PermissionProfileController@permissions')->name('profiles.permissions');
 
 
