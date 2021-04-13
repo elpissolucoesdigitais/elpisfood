@@ -13,6 +13,7 @@
 
 Route::prefix('admin')
     ->namespace('Admin')
+    ->middleware('auth')
     ->group(function(){
    /**
      * plan X profile
@@ -101,4 +102,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+/**
+ * Auth Routes
+ */
+Auth::routes();
 
