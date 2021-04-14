@@ -99,9 +99,12 @@ Route::prefix('admin')
     Route::delete('plans/{url}','PlanController@destroy')->name('plans.destroy');
 });
 
+    /**
+     * Site
+     */
 
-
-Route::get('/', 'Site\SiteController@index')->name('site.home');
+    Route::get('plan/{url}','Site\SiteController@plan')->name('plan.subscription');
+    Route::get('/', 'Site\SiteController@index')->name('site.home');
 
 
 /**
