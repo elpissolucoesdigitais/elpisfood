@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Admin\ACL;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Profile;
-use App\Http\Requests\StoreUpdateProfile;
+namespace App\Http\Controllers\Admin;
 
-class ProfileController extends Controller
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdateUser;
+use App\Models\User;
+use Illuminate\Http\Request;
+
+class UserController extends Controller
 {
     protected $repository;
 
-    public function __construct(Profile $profile)
+    public function __construct(User $user)
     {
-        $this->repository = $profile;
+        $this->repository = $user;
     }
 
     /**
@@ -22,8 +23,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $profiles = $this->repository->paginate();
-        return view('admin.pages.profiles.index',compact('profiles'));
+        $users = $this->repository->paginate();
+        return view('admin.pages.users.index',compact('users'));
     }
 
     /**
@@ -33,21 +34,24 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.profiles.create');
+        return view('admin.pages.users.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\StoreUpdateUser  $request
+     * @return \Illuminate\Http\StoreUpdateUser
      */
-    public function store(StoreUpdateProfile $request)
+    public function store(StoreUpdateUser $request)
     {
-        //dd($request->all());
-        $this->repository->create($request->all());
 
-        return redirect()->route('profiles.index');
+        $data = $request->all();
+        $data['tenant_id'] = auth()->user()->tenant_id;
+
+        $this->repository->create($data);
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -58,11 +62,11 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        if(!$profile = $this->repository->find($id))
+        if(!$user = $this->repository->find($id))
         {
             return redirect()->back();
         }
-        return view('admin.pages.profiles.show',compact('profile'));
+        return view('admin.pages.users.show',compact('user'));
     }
 
     /**
@@ -73,29 +77,29 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        if(!$profile = $this->repository->find($id))
+        if(!$user = $this->repository->find($id))
         {
             return redirect()->back();
         }
-        return view('admin.pages.profiles.edit',compact('profile'));
+        return view('admin.pages.users.edit',compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\StoreUpdateUser  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\StoreUpdateUser
      */
-    public function update(StoreUpdateProfile $request, $id)
+    public function update(StoreUpdateUser $request, $id)
     {
-        if(!$profile = $this->repository->find($id))
+        if(!$user = $this->repository->find($id))
         {
             return redirect()->back();
         }
-        $profile->update($request->all());
+        $user->update($request->all());
 
-        return redirect()->route('profiles.index');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -121,11 +125,12 @@ class ProfileController extends Controller
                                     {
                                         if($request->filter)
                                         {
-                                            $query->where('name',$request->filter)
-                                                  ->orWhere('description','LIKE',"%{$request->filter}%");
+                                            $query->where('email',$request->filter)
+                                                  ->orWhere('name','LIKE',"%{$request->filter}%");
                                         }
                                     })
                                     ->paginate();
         return view('admin.pages.profiles.index',compact('profiles','filters'));
     }
 }
+
