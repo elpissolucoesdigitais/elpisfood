@@ -17,7 +17,7 @@ Route::prefix('admin')
     ->group(function(){
 
     /**
-     * Routes Profiles
+     * Routes users
      */
     Route::any('users/search','UserController@search')->name('users.search');
     Route::resource('users','UserController');

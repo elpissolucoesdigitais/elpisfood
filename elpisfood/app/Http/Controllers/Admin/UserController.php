@@ -40,8 +40,8 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\StoreUpdateUser  $request
-     * @return \Illuminate\Http\StoreUpdateUser
+     * @param  \Illuminate\Http\Requests\StoreUpdateUser  $request
+     * @return \Illuminate\Http\Response
      */
     public function store(StoreUpdateUser $request)
     {
@@ -87,9 +87,9 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\StoreUpdateUser  $request
+     * @param  \Illuminate\Http\Requests\StoreUpdateUser  $request
      * @param  int  $id
-     * @return \Illuminate\Http\StoreUpdateUser
+     * @return \Illuminate\Http\Responses
      */
     public function update(StoreUpdateUser $request, $id)
     {
@@ -110,17 +110,17 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        if(!$profile = $this->repository->find($id)){
+        if(!$user = $this->repository->find($id)){
             return redirect()->back();
         }
-        $profile->delete();
+        $user->delete();
 
-        return redirect()->route('profiles.index');
+        return redirect()->route('users.index');
     }
     public function search(Request $request)
     {
         $filters = $request->only('filter');
-        $profiles = $this->repository
+        $users = $this->repository
                                     ->where(function($query) use ($request)
                                     {
                                         if($request->filter)
@@ -130,7 +130,7 @@ class UserController extends Controller
                                         }
                                     })
                                     ->paginate();
-        return view('admin.pages.profiles.index',compact('profiles','filters'));
+        return view('admin.pages.users.index',compact('users','filters'));
     }
 }
 

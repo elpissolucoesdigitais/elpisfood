@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','tenant_id',
     ];
 
     /**
@@ -40,7 +40,7 @@ class User extends Authenticatable
     /**
      * Tenant
      */
-    public function Tenant()
+    public function tenant()
     {
         return $this->belongsTo(Tenant::class);
     }
