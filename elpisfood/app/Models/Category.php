@@ -1,15 +1,13 @@
 <?php
 
 namespace App\Models;
-
+use App\Tenant\Traits\TenantTrait;
+use App\Tenant\Observers\TenantObserver;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $fillable = ['name','category','description','url'];
+    use TenantTrait;
+    protected $fillable = ['name','description','url'];
 
-    public function tenant()
-    {
-        return $this->belongsTo(Tenant::class);
-    }
 }

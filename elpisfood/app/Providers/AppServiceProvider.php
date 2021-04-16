@@ -7,7 +7,7 @@ use App\Models\{
     Plan,Tenant
 };
 use App\Observers\{
-    PlanObserver,TenantObserver
+    PlanObserver,TenantObserver,CategoryObserver
 };
 use Illuminate\Support\ServiceProvider;
 
