@@ -20,7 +20,7 @@ Route::prefix('admin')
         /**
      * Routes categories
      */
-    Route::any('categories/search','CategoryController@search')->name('Category.search');
+    Route::any('categories/search','CategoryController@search')->name('categories.search');
     Route::resource('categories','CategoryController');
     /**
      * Routes users
