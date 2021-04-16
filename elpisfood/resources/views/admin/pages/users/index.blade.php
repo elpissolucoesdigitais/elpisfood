@@ -20,6 +20,7 @@
                 <button type="submit" class="btn btn-dark">Filtrar</button>
             </form>
         </div>
+        @include('admin.includes.alerts')
         <div class="card-body">
             <table class="table table-condensed">
                 <thead>
