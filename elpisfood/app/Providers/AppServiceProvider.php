@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\{
+    Category,
     Plan,Tenant
 };
 use App\Observers\{
@@ -31,5 +32,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Plan::observe(PlanObserver::class);
         Tenant::observe(TenantObserver::class);
+        Category::observe(CategoryObserver::class);
     }
 }
