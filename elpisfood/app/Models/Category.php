@@ -10,4 +10,8 @@ class Category extends Model
     use TenantTrait;
     protected $fillable = ['name','description','url'];
 
+    public function products()
+    {
+        $this->belongsToMany(Product::class);
+    }
 }
