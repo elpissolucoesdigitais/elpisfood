@@ -17,6 +17,12 @@ Route::prefix('admin')
     ->group(function(){
 
     /**
+     * Routes Tables
+     */
+    Route::any('tables/search','TableController@search')->name('tables.search');
+    Route::resource('tables','TableController');
+
+    /**
      *  product x Category
      *
      */
