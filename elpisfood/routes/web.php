@@ -16,8 +16,12 @@ Route::prefix('admin')
     ->middleware('auth')
     ->group(function(){
 
-
-        /**
+    /**
+     * Routes Products
+     */
+    Route::any('products/search','ProductController@search')->name('products.search');
+    Route::resource('products','ProductController');
+    /**
      * Routes categories
      */
     Route::any('categories/search','CategoryController@search')->name('categories.search');

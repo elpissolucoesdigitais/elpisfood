@@ -29,6 +29,7 @@ class StoreUpdateProduct extends FormRequest
             'title' => "required|string|min:3|max:255|unique:products,title,{$id},id",
             'description' => "required|string|min:5|max:500",
             'image' => "required|image",
+            'price'=>"required|numeric"
         ];
         if($this->method() == 'PUT')
         {
