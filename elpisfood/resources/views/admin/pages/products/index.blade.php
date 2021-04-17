@@ -25,7 +25,7 @@
             <table class="table table-condensed">
                 <thead>
                     <tr>
-                        <th>Imagem</th>
+                        <th width="100">Imagem</th>
                         <th>Nome</th>
                         <th width="270">Ações</th>
                     </tr>
@@ -42,6 +42,7 @@
                             <td style="width=10px;">
                                 <a href="{{ route('products.edit', $product->id) }}" class="btn btn-info">Editar</a>
                                 <a href="{{ route('products.show', $product->id) }}" class="btn btn-warning">Ver</a>
+                                <a href="{{ route('products.categories', $product->id) }}" class="btn btn-warning" title="categorias">Categorias</a>
                             </td>
                         </tr>
                     @endforeach
