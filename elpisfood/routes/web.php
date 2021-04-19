@@ -18,7 +18,7 @@ Route::prefix('admin')
 
 
     route::get('test-acl', function(){
-        dd(auth()->user()->permissions());
+        dd(auth()->user()->hasPermission('Usuario'));
     });
         /**
      * Routes Tables
