@@ -1,21 +1,21 @@
 @extends('adminlte::page')
 
-@section('title', "Permissões do perfil {{$profile->name}}")
+@section('title', "Permissões do perfil {$role->name}")
 
 @section('content_header')
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Dashboard</a></li>
-        <li class="breadcrumb-item active"><a href="{{route('profiles.permissions',$profile->id)}}" class="active">Permissões do perfil</a></li>
+        <li class="breadcrumb-item active"><a href="{{route('roles.permissions',$role->id)}}" class="active">Permissões do perfil</a></li>
     </ol>
-    <h1>Permissões do perfil {{$profile->name}}
-    <a href="{{route('profiles.permissions.available',$profile->id)}}" class="btn btn-dark">ADD Nova Permissão <i class="fas fa-plus-circle"></i></a></h1>
+    <h1>Permissões do perfil {{$role->name}}
+    <a href="{{route('roles.permissions.available',$role->id)}}" class="btn btn-dark">ADD Nova Permissão <i class="fas fa-plus-circle"></i></a></h1>
 
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <form action="{{route('profiles.search')}}" method="post" class="form form-inline">
+            <form action="{{route('roles.search')}}" method="post" class="form form-inline">
                 @csrf
 
                 <input type="text" name="filter" class="form-control" placeholder="pesquisar" value="{{$filters['filter'] ?? ''}}">
@@ -35,14 +35,14 @@
                     @foreach ($permissions as $permission)
                         <tr>
                             <td>
-                                <input type="checkbox" name="permissions[]" value="{{$permission->id}}">
+                                {{$permission->id}}
                             </td>
                             <td>
                                 {{$permission->name}}
                             </td>
 
                             <td styled="width=10px;">
-                                <a href="{{route('profiles.permission.detach',[$profile->id, $permission->id])}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                <a href="{{route('roles.permission.detach',[$role->id, $permission->id])}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                     @endforeach
