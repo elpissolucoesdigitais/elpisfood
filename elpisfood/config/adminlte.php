@@ -255,6 +255,12 @@ return [
             'can'  => 'users',
         ],
         [
+            'text' => 'Cargos',
+            'url'  => 'admin/roles',
+            'icon' => 'fas fa-user-tag',
+            'can'  => 'roles',
+        ],
+        [
             'text' => 'Categorias',
             'url'  => 'admin/categories',
             'icon' => 'fas fa-layer-group',
@@ -272,6 +278,7 @@ return [
             'icon' => 'fas fa-tablet',
             'can'  => 'tables',
         ],
+
 
     ],
 

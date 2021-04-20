@@ -15,4 +15,11 @@ class Permission extends Model
     {
         return $this->belongsToMany(Profile::class);
     }
+    /**
+     * GET Roles
+     */
+    public function roles()
+    {
+        return $this->belongsToMany(Roles::class);
+    }
 }
