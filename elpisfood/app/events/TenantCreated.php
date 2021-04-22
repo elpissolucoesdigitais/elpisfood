@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tentant\Events;
+namespace App\Events;
 
 use App\Models\Tenant;
 use App\Models\User;
@@ -16,6 +16,8 @@ class TenantCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    private $user;
+
     /**
      * Create a new event instance.
      *
@@ -25,20 +27,23 @@ class TenantCreated
     {
         $this->user = $user;
     }
+
     /**
-     * get user created
+     * Return user created
      */
-    public function user():User
+    public function user(): User
     {
         return $this->user;
     }
+
     /**
-     * get tenant
+     * Get tenant
      */
-    public function tenant():Tenant
+    public function tenant(): Tenant
     {
         return $this->user->tenant;
     }
+
     /**
      * Get the channels the event should broadcast on.
      *

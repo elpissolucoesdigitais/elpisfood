@@ -16,7 +16,7 @@ class DetailPlanController extends Controller
     {
         $this->repository = $detailPlan;
         $this->plan = $plan;
-        $this->middleware(['can:details']);
+        $this->middleware(['can:plans']);
 
     }
 

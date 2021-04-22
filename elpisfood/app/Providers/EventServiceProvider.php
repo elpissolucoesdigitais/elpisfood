@@ -24,7 +24,7 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         TenantCreated::class =>[
-            AddRoleTenant:class,
+            AddRoleTenant::class,
         ]
     ];
 

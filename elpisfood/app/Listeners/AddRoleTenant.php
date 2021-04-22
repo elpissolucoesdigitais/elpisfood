@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Models\Role;
-use App\Tentant\Events\TenantCreated;
+use App\Events\TenantCreated;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 

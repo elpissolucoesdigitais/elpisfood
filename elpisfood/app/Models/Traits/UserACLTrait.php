@@ -8,17 +8,17 @@ trait UserACLTrait
 {
     public function permissions()
     {
-        $permissionPlan = $this->permissionsPlan();
-        $permissionRole = $this->permissionsRole();
+        //dd($this->permissionsPlan());
+        //dd($this->permissionsRole());
+        $permissionsPlan = $this->permissionsPlan();
+        $permissionsRole = $this->permissionsRole();
 
         $permissions = [];
-
-        foreach ($$permissonsRole as $permissionRole) {
-            if(in_array($permissionRole, $permissionPlan)){
-                array_push($permissions,$permissionsPlan);
-            }
-
+        foreach ($permissionsRole as $permission) {
+            if (in_array($permission, $permissionsPlan))
+                array_push($permissions, $permission);
         }
+
         return $permissions;
     }
     public function permissionsPlan():array
@@ -45,8 +45,12 @@ trait UserACLTrait
         $roles = $this->roles()->with('permissions')->get();
 
         $permissions = [];
-        foreach($roles->permissions as $permission){
-            array_push($permissions, $permission->name);
+        foreach($roles as $role)
+        {
+            foreach($role->permissions as $permission)
+            {
+                array_push($permissions, $permission->name);
+            }
         }
         return $permissions;
     }

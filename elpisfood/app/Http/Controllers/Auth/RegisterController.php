@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\TenantCreated;
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use App\Services\TenantService;
-use App\Tentant\Events\TenantCreated;
+use App\Tenant\Events\TenantCreated as EventsTenantCreated;
+use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -40,7 +41,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+
     }
 
     /**
@@ -52,11 +53,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'min:3','max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6','max:16', 'confirmed'],
-            'cnpj'=>['required','numeric','min:14','unique:tenants'],
-            'empresa'=>['required','string','min:3','max:255','unique:tenants,name']
+            'name' => ['required', 'string', 'min:3', 'max:255'],
+            'email' => ['required', 'string', 'email', 'min:3', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:6', 'max:16', 'confirmed'],
+            'empresa' => ['required', 'string', 'min:3', 'max:255', 'unique:tenants,name'],
+
         ]);
     }
 
@@ -68,15 +69,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if(!$plan = session('plan'))
-        {
+        if (!$plan = session('plan')) {
             return redirect()->route('site.home');
         }
 
         $tenantService = app(TenantService::class);
-        $user=$tenantService->make($plan,$data);
+        $user = $tenantService->make($plan, $data);
 
         event(new TenantCreated($user));
+
         return $user;
     }
 }
