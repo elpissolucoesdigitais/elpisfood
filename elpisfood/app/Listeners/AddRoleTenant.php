@@ -29,12 +29,11 @@ class AddRoleTenant
     {
         $user = $event->user();
 
+        if (!$role = Role::first())
+            return;
 
-       if(! $role = Role::first())
-       {
-           return;
-       }
-       $user->roles()->attach($role);
-       return 1;
+        $user->roles()->attach($role);
+
+        return 1;
     }
 }
