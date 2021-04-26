@@ -20,7 +20,7 @@ class CategoryRepository implements CategoryRepositoryInterface
             ->join('tenants', 'tenants.id', '=', 'categories.tenant_id')
             ->where('tenants.uuid', $uuid)
             ->select('categories.*')
-            ->get();
+            ->paginate();
     }
 
     public function getCategoriesByTenantId(int $idTenant)
@@ -34,6 +34,12 @@ class CategoryRepository implements CategoryRepositoryInterface
     {
         return DB::table($this->table)
                     ->where('uuid', $uuid)
+                    ->first();
+    }
+    public function getCategoryByUrl(string $url)
+    {
+        return DB::table($this->table)
+                    ->where('url', $url)
                     ->first();
     }
 }
