@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use TenantTrait;
-    protected $fillable = ['name','description','url'];
+    protected $fillable = ['name','description','url','uuid'];
 
     public function products()
     {
