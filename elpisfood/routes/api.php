@@ -15,4 +15,6 @@ Route::get('tables/{identify}','TableApiController@show');
 
 Route::get('products/{identify}','ProductApiController@show');
 Route::get('products/','ProductApiController@productsByTenant');
+
+Route::post('client','Auth\RegisterController@store');
 });
