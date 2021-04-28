@@ -1,5 +1,7 @@
 <?php
 
+
+Route::post('sanctum/token','Api\Auth\AuthClientController@auth');
 Route::group([
     'prefix'=>'v1',
     'namespace'=>'Api'
@@ -17,5 +19,5 @@ Route::get('products/{identify}','ProductApiController@show');
 Route::get('products/','ProductApiController@productsByTenant');
 
 Route::post('client','Auth\RegisterController@store');
-Route::post('client','Auth\RegisterController@store');
+Route::post('sanctum/token','Auth\AuthClientController@auth');
 });
