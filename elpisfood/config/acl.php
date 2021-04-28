@@ -7,6 +7,7 @@ return
      */
     'admins'=>
     [
-        'adnanaraujo10@gmail.com'
+        'adnanaraujo10@gmail.com',
+        'admin@gmail.com'
     ]
 ];
