@@ -35,7 +35,7 @@ class StoreOrder extends FormRequest
             'comment' => [
                 'nullable',
                 'max:1000',
-            ]
+            ],
         ];
     }
 }

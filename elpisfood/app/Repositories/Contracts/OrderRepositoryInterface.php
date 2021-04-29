@@ -14,5 +14,5 @@ interface OrderRepositoryInterface
         $tableId = ''
     );
     public function getOrderByIdentify(string $identify);
-    
+
 }

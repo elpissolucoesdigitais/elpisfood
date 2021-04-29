@@ -8,7 +8,7 @@ use App\Repositories\Contracts\TenantRepositoryInterface;
 
 class OrderService
 {
-    protected $orderRepository, $tenantRepository;
+    protected $orderRepository, $tenantRepository,$tableRepository;
 
     public function __construct(
         OrderRepositoryInterface $orderRepository,
@@ -55,11 +55,15 @@ class OrderService
 
         $identify = substr(str_shuffle($characters), 0,$qtyCaraceters);
 
+        if($this->orderRepository->getOrderByIdentify($identify))
+        {
+            $this->getIdentifyOrder($qtyCaraceters + 1);
+        }
         return $identify;
     }
     private function getTotalOrder(array $products):float
     {
-        return (float)90;
+        return (float)100;
 
     }
     private function getTenantIdByOrder(string $uuid)
