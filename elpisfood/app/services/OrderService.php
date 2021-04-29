@@ -9,7 +9,11 @@ use App\Repositories\Contracts\TenantRepositoryInterface;
 class OrderService
 {
     protected $orderRepository, $tenantRepository;
-    public function __construct(OrderRepositoryInterface $orderRepository, TenantRepositoryInterface $tenantRepository, TableRepositoryInterface $tableRepository)
+
+    public function __construct(
+        OrderRepositoryInterface $orderRepository,
+        TenantRepositoryInterface $tenantRepository,
+        TableRepositoryInterface $tableRepository)
     {
         $this->orderRepository = $orderRepository;
         $this->tenantRepository = $tenantRepository;
@@ -21,10 +25,20 @@ class OrderService
        $total = $this->getTotalOrder([]);
        $status ='open';
        $tenantId = $this->getTenantIdByOrder($order['token_company']);
+       $comment = isset($order['comment']) ? $order['comment'] : '';
        $clientId = $this->getClientIdByOrder();
        $tableId = $this->getTableIdByOrder($order['table'] ?? '');
 
-       $order = $this->orderRepository->createNewOrder($identify,$total,$status,$tenantId,$clientId,$tableId);
+       $order = $this->orderRepository->createNewOrder
+       (
+           $identify,
+           $total,
+           $status,
+           $tenantId,
+           $comment,
+           $clientId,
+           $tableId
+        );
 
        return $order;
     }
