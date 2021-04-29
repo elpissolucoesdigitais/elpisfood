@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class OrderResource extends JsonResource
@@ -14,10 +15,9 @@ class OrderResource extends JsonResource
      */
     public function toArray($request)
     {
-
-            return [
-                'identify' => $this->identify,
-
-            ];
+        return [
+            'identify' => $this->identify,
+            'total' => $this->total,
+        ];
     }
 }
