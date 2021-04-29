@@ -22,9 +22,11 @@ class OrderService
        $status ='open';
        $tenantId = $this->getTenantIdByOrder($order['token_company']);
        $clientId = $this->getClientIdByOrder();
-       $tableId = $this->getTableIdByOrder($order['table']);
+       $tableId = $this->getTableIdByOrder($order['table'] ?? '');
 
        $order = $this->orderRepository->createNewOrder($identify,$total,$status,$tenantId,$clientId,$tableId);
+
+       return $order;
     }
     private function getIdentifyOrder(int $qtyCaraceters = 8)
     {

@@ -14,8 +14,10 @@ class OrderResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            
-        ];
+
+            return [
+                'identify' => $this->identify,
+                
+            ];
     }
 }
