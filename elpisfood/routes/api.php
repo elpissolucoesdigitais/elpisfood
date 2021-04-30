@@ -11,7 +11,7 @@ Route::group([
 ], function(){
     Route::get('auth/me','Api\Auth\AuthClientController@me');
 
-    Route::post('auth/v1/orders/{identify}/evaluations','Api\EvaluationApiController@store');
+    Route::post('auth/v1/orders/{identifyOrder}/evaluations','Api\EvaluationApiController@store');
 
 
     Route::get('auth/v1/my-orders', 'Api\OrderApiController@myOrders');
