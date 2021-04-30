@@ -13,26 +13,21 @@ class EvaluationService
     public function __construct(
         EvaluationRepositoryInterface $evaluation,
         OrderRepositoryInterface $orderRepository
-        )
-    {
+    ) {
         $this->evaluationRepository = $evaluation;
-        $this->OrderRepository = $orderRepository;
+        $this->orderRepository = $orderRepository;
     }
 
-    public function createNewEvaluationOrder(string $identifyOrder)
+    public function createNewEvaluation(string $identifyOrder, array $evaluation)
     {
         $clientId = $this->getIdClient();
         $order = $this->orderRepository->getOrderByIdentify($identifyOrder);
-        return $this->evaluationRepository->newEvaluationOrder($order->id,$clientId);
+
+        return $this->evaluationRepository->newEvaluationOrder($order->id, $clientId, $evaluation);
     }
 
     private function getIdClient()
     {
         return auth()->user()->id;
-    }
-
-    public function getEvaluationByUuid(string $uuid)
-    {
-        return $this->evaluation->getEvaluationByUuid($uuid);
     }
 }
