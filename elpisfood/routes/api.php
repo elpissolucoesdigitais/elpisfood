@@ -4,12 +4,17 @@
 Route::post('sanctum/token','Api\Auth\AuthClientController@auth');
 
 
+
+
 Route::group([
     'middleware' => ['auth:sanctum']
 ], function(){
     Route::get('auth/me','Api\Auth\AuthClientController@me');
+    Route::get('auth/v1/my-orders', 'Api\OrderApiController@myOrders');
     Route::post('auth/v1/orders', 'Api\OrderApiController@store');
 });
+
+
 
 
 Route::group([

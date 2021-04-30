@@ -7,6 +7,7 @@ use App\Repositories\Contracts\OrderRepositoryInterface;
 use App\Repositories\Contracts\ProductRepositoryInterface;
 use App\Repositories\Contracts\TableRepositoryInterface;
 use App\Repositories\Contracts\TenantRepositoryInterface;
+use App\Repositories\OrderRepository;
 
 class OrderService
 {
@@ -24,6 +25,15 @@ class OrderService
         $this->tableRepository = $tableRepository;
         $this->productRepository = $productRepository;
     }
+
+    public function orderByClient()
+    {
+        $idClient = $this->getClientIdByOrder();
+
+        return $this->orderRepository->getOrdersByClientId($idClient);
+    }
+
+
     public function getOrderByIdentify(string $identify)
     {
         return $this->orderRepository->getOrderByIdentify($identify);
