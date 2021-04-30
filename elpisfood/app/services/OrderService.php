@@ -47,6 +47,7 @@ class OrderService
            $tableId
         );
 
+        $this->orderRepository->registerProductsOrder($order->id, $productsOrder);
        return $order;
     }
     private function getIdentifyOrder(int $qtyCaraceters = 8)
