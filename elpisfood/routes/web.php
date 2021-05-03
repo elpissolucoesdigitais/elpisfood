@@ -165,7 +165,7 @@ Route::prefix('admin')
      * Routes dashboard
      */
 
-    Route::get('/','PlanController@index')->name('admin.index');
+    Route::get('/','DashboardController@home')->name('admin.index');
     /**
      * Routes Plans
      */
@@ -186,7 +186,7 @@ Route::prefix('admin')
      */
 
     Route::get('plan/{url}','Site\SiteController@plan')->name('plan.subscription');
-    Route::get('/', 'Site\SiteController@index')->name('site.home');
+    Route::get('/', 'Site\SiteController@index')->name('site.index');
 
 
 /**
