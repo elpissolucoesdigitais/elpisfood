@@ -19,9 +19,12 @@ class OrderResource extends JsonResource
             'identify' => $this->identify,
             'total' => $this->total,
             'status'=>$this->status,
+            'company'=> new TenantResource($this->tenant),
+            'date'=>Carbon::make($this->created_at)->format('Y-m-d'),
             'client'=>$this->client_id ? new ClientResource($this->client) : '',
             'table'=>$this->table_id ? new TableResource($this->table) : '',
-            'products'=> ProductResource::collection($this->products)
+            'products'=> ProductResource::collection($this->products),
+            'evaluations'=>EvaluationResource::collection($this->evaluations)
         ];
     }
 }
