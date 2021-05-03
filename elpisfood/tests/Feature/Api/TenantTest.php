@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Api;
 
 use App\Models\Tenant;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -16,6 +16,7 @@ class TenantTest extends TestCase
      */
     public function testGetAllTenants()
     {
+        //ERROR TEM QUE APAGAR O BANCO MANUAL MOD 22, AULA 4 REFRESH BANCO
 
         factory(Tenant::class,10)->create();
 
