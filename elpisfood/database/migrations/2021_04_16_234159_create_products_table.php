@@ -16,10 +16,10 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->uuid('uuid');
-            $table->string('title')->unique();
+            $table->string('title');
             $table->string('image');
             $table->double('price',10,2);
-            $table->string('flag')->unique();
+            $table->string('flag');
             $table->text('description');
             $table->timestamps();
             $table->unsignedBigInteger('tenant_id');
