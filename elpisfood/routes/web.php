@@ -24,6 +24,10 @@ Route::prefix('admin')
     ->middleware('auth')
     ->group(function(){
 
+
+    // Orders
+    Route::get('orders', 'OrderController@index')->name('orders.index');
+
     /**
      * roles X users
      *
